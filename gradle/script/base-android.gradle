@@ -1,0 +1,33 @@
+android {
+    compileSdk 32
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 32
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "String", "BASE_URL", "\"https://api.yelp.com/v3/\""
+        buildConfigField "String", "API_KEY", "\"g1j7WsY2Buyk987RhjBYiQtuKq68qpM5bgy3EbbsiAIvFybvpVXHCc5MlFnAAOHRbYrm1I3D-Hu2-YEz4sVs8lYEb4od4J7b4aj-5TPLnq4srkv52DltNvq4AVOQY3Yx\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}

@@ -1,0 +1,27 @@
+package abika.sinau.core.domain.usecase
+
+import abika.sinau.core.data.source.Resource
+import abika.sinau.core.data.source.remote.response.BusinessSearchResponse
+import abika.sinau.core.domain.model.BusinessDetailDomain
+import abika.sinau.core.domain.model.BusinessReviewDomain
+import abika.sinau.core.domain.repository.Repository
+
+
+/**
+ * @author by Abika Chairul Yusri on 12/7/2022
+ */
+class UseCaseImpl(
+    private val repository: Repository
+) : UseCase {
+    override suspend fun getBusinessSearch(location: String): Resource<BusinessSearchResponse> {
+        return repository.getBusinessSearch(location)
+    }
+
+    override suspend fun getBusinessDetail(businessId: String): Resource<BusinessDetailDomain> {
+        return repository.getBusinessDetail(businessId)
+    }
+
+    override suspend fun getBusinessReview(businessId: String): Resource<BusinessReviewDomain> {
+        return repository.getBusinessReview(businessId)
+    }
+}
