@@ -2,12 +2,13 @@ package abika.sinau.core.data.repository
 
 import abika.sinau.core.data.source.Resource
 import abika.sinau.core.data.source.remote.DataSource
-import abika.sinau.core.data.source.remote.response.BusinessSearchResponse
 import abika.sinau.core.domain.model.BusinessDetailDomain
 import abika.sinau.core.domain.model.BusinessReviewDomain
+import abika.sinau.core.domain.model.BusinessSearchDomain
 import abika.sinau.core.domain.repository.Repository
 import abika.sinau.core.utils.DataMapper.mapBusinessDetailResponseToDomain
 import abika.sinau.core.utils.DataMapper.mapBusinessReviewResponseToDomain
+import abika.sinau.core.utils.DataMapper.mapBusinessSearchResponseToDomain
 import abika.sinau.core.utils.responseToResources
 
 
@@ -17,9 +18,29 @@ import abika.sinau.core.utils.responseToResources
 class RepositoryImpl(
     private val dataSource: DataSource
 ) : Repository {
-    override suspend fun getBusinessSearch(location: String): Resource<BusinessSearchResponse> {
-        return responseToResources(dataSource.getBusinessSearch(location))
+    override suspend fun getBusinessSearch(
+        location: String?,
+        price: ArrayList<String>?,
+        limit: Int?
+    ): Resource<BusinessSearchDomain> {
+        val result = responseToResources(
+            dataSource.getBusinessSearch(
+                location,
+                price,
+                limit
+            )
+        )
+
+        return mapBusinessSearchResponseToDomain(result)
     }
+
+//    override suspend fun getBusinessSearch(request: BusinessSearchRequest): Resource<BusinessSearchResponse> {
+//        return responseToResources(dataSource.getBusinessSearch(request))
+//    }
+
+//    override suspend fun getBusinessSearch(location: String): Resource<BusinessSearchResponse> {
+//        return responseToResources(dataSource.getBusinessSearch(location))
+//    }
 
     override suspend fun getBusinessDetail(businessId: String): Resource<BusinessDetailDomain> {
         val result = responseToResources(dataSource.getBusinessDetail(businessId))

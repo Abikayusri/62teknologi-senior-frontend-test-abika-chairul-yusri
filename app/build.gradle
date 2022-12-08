@@ -11,19 +11,18 @@ apply from: rootProject.file('gradle/script/base-android.gradle')
 
 dependencies {
 
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def coroutineVersion = "1.6.4"
-    def retrofitVersion = "2.9.0"
-    def okhttpVersion = "4.9.3"
     def lifecycleVersion = "2.5.1"
     def hiltVersion = "2.43.2"
-    def pagingVersion = "3.1.1"
-    def lottieVersion = "3.4.0"
 
     implementation project(":core")
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.fragment:fragment-ktx:1.5.2'
+    implementation 'androidx.activity:activity-ktx:1.5.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
@@ -32,14 +31,6 @@ dependencies {
     // Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
-
-    // Retrofit
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-
-    // OkHttp
-    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
 
     // ViewModel LiveData
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
@@ -50,13 +41,11 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
 
+    // Circle Indicator
+    implementation 'me.relex:circleindicator:2.1.6'
+
     // Chucker
     debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
-
-    // Paging
-    implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
-
-    // Lottie
-    implementation "com.airbnb.android:lottie:$lottieVersion"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
 
 }

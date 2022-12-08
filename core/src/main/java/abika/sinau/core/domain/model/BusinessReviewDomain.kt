@@ -10,7 +10,10 @@ data class BusinessReviewDomain(
         val rating: Int? = null,
         val text: String? = null,
         val timeCreated: String? = null,
-        val user: User? = null
+        val user: User? = null,
+        val userId: String? = null,
+        val imageUrl: String? = null,
+        val name: String? = null,
     ) {
         data class User(
             val id: String? = null,

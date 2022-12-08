@@ -40,7 +40,8 @@ object NetworkModule {
         return ChuckerInterceptor.Builder(context)
             .collector(chuckerCollector)
             .maxContentLength(250_000L)
-            .redactHeaders("Auth-Token", "Bearer")
+//            .redactHeaders("Auth-Token", "Bearer")
+            .redactHeaders("**")
             .alwaysReadResponseBody(true)
             .build()
     }

@@ -28,10 +28,6 @@ fun Activity.toastShort(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
-fun Activity.toastLong(message: String) {
-    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-}
-
 fun View.visible() {
     visibility = View.VISIBLE
 }
@@ -58,8 +54,4 @@ fun ImageView.loadImage(url: String, placeholder: Int, error: Int) {
         .error(error)
         .placeholder(placeholder)
         .into(this)
-}
-
-fun EditText.getTextString(): String {
-    return text.toString()
 }

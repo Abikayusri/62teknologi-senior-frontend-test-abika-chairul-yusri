@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyAppEnamDua</string>
+    <string name="label_reset">Reset</string>
+    <string name="label_apply">Terapkan</string>
+    <string name="label_open_map">Tap Untuk Membuka Peta</string>
+    <string name="label_review">Review</string>
 </resources>

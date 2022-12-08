@@ -12,10 +12,26 @@ import retrofit2.Response
  */
 class DataSourceImpl(
     private val apiService: ApiService
-): DataSource {
-    override suspend fun getBusinessSearch(location: String): Response<BusinessSearchResponse> {
-        return apiService.getBusinessSearchPaging(location)
+) : DataSource {
+    override suspend fun getBusinessSearch(
+        location: String?,
+        price: ArrayList<String>?,
+        limit: Int?
+    ): Response<BusinessSearchResponse> {
+        return apiService.getBusinessSearchPaging(
+            location,
+            price,
+            limit
+        )
     }
+
+//    override suspend fun getBusinessSearch(location: String): Response<BusinessSearchResponse> {
+//        return apiService.getBusinessSearchPaging(location)
+//    }
+
+//    override suspend fun getBusinessSearch(request: BusinessSearchRequest): Response<BusinessSearchResponse> {
+//        return apiService.getBusinessSearchPaging(request)
+//    }
 
     override suspend fun getBusinessDetail(businessId: String): Response<BusinessDetailResponse> {
         return apiService.getBusinessDetail(businessId)

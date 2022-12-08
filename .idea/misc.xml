@@ -3,8 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidStudioProjects/Work/EnamDua/MyAppEnamDua/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProjects/Work/EnamDua/MyAppEnamDua/app/src/main/res/drawable/ic_dot_indicator_image_slide_active.xml" value="0.233" />
+        <entry key="..\:/AndroidStudioProjects/Work/EnamDua/MyAppEnamDua/app/src/main/res/drawable/ic_file_grey_24.xml" value="0.1245" />
+        <entry key="..\:/AndroidStudioProjects/Work/EnamDua/MyAppEnamDua/app/src/main/res/drawable/ic_location_city_black_24.xml" value="0.1245" />
+        <entry key="..\:/AndroidStudioProjects/Work/EnamDua/MyAppEnamDua/app/src/main/res/drawable/ic_location_red.xml" value="0.1285" />
+        <entry key="..\:/AndroidStudioProjects/Work/EnamDua/MyAppEnamDua/app/src/main/res/layout/activity_detail.xml" value="0.264" />
+        <entry key="..\:/AndroidStudioProjects/Work/EnamDua/MyAppEnamDua/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProjects/Work/EnamDua/MyAppEnamDua/app/src/main/res/layout/item_business_search.xml" value="0.264" />
+        <entry key="..\:/AndroidStudioProjects/Work/EnamDua/MyAppEnamDua/app/src/main/res/layout/item_carousel.xml" value="0.24010416666666667" />
+        <entry key="..\:/AndroidStudioProjects/Work/EnamDua/MyAppEnamDua/app/src/main/res/layout/item_checkbox.xml" value="0.24010416666666667" />
+        <entry key="..\:/AndroidStudioProjects/Work/EnamDua/MyAppEnamDua/app/src/main/res/layout/item_filter.xml" value="0.536" />
+        <entry key="..\:/AndroidStudioProjects/Work/EnamDua/MyAppEnamDua/app/src/main/res/layout/item_radio_button.xml" value="0.24010416666666667" />
+        <entry key="..\:/AndroidStudioProjects/Work/EnamDua/MyAppEnamDua/app/src/main/res/layout/item_review.xml" value="0.253125" />
+        <entry key="..\:/AndroidStudioProjects/Work/EnamDua/MyAppEnamDua/app/src/main/res/layout/layout_limit_result_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProjects/Work/EnamDua/MyAppEnamDua/app/src/main/res/layout/layout_radio_group.xml" value="0.253125" />
       </map>
     </option>
   </component>

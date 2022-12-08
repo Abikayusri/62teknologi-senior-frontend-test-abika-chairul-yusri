@@ -1,8 +1,8 @@
 package abika.sinau.core.data.source.remote.network
 
 import abika.sinau.core.data.source.remote.response.BusinessDetailResponse
-import abika.sinau.core.data.source.remote.response.BusinessSearchResponse
 import abika.sinau.core.data.source.remote.response.BusinessReviewResponse
+import abika.sinau.core.data.source.remote.response.BusinessSearchResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -16,7 +16,9 @@ interface ApiService {
 
     @GET("businesses/search")
     suspend fun getBusinessSearchPaging(
-        @Query("location") location: String
+        @Query("location") location: String?,
+        @Query("price") price: ArrayList<String>?,
+        @Query("limit") limit: Int?,
     ): Response<BusinessSearchResponse>
 
     @GET("businesses/{businessesId}")

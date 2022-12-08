@@ -1,9 +1,9 @@
 package abika.sinau.core.domain.usecase
 
 import abika.sinau.core.data.source.Resource
-import abika.sinau.core.data.source.remote.response.BusinessSearchResponse
 import abika.sinau.core.domain.model.BusinessDetailDomain
 import abika.sinau.core.domain.model.BusinessReviewDomain
+import abika.sinau.core.domain.model.BusinessSearchDomain
 import abika.sinau.core.domain.repository.Repository
 
 
@@ -13,8 +13,16 @@ import abika.sinau.core.domain.repository.Repository
 class UseCaseImpl(
     private val repository: Repository
 ) : UseCase {
-    override suspend fun getBusinessSearch(location: String): Resource<BusinessSearchResponse> {
-        return repository.getBusinessSearch(location)
+    override suspend fun getBusinessSearch(
+        location: String?,
+        price: ArrayList<String>?,
+        limit: Int?
+    ): Resource<BusinessSearchDomain> {
+        return repository.getBusinessSearch(
+            location,
+            price,
+            limit
+        )
     }
 
     override suspend fun getBusinessDetail(businessId: String): Resource<BusinessDetailDomain> {

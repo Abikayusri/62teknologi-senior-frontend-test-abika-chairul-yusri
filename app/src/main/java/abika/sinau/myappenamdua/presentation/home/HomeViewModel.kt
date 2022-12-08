@@ -1,7 +1,7 @@
 package abika.sinau.myappenamdua.presentation.home
 
 import abika.sinau.core.data.source.Resource
-import abika.sinau.core.data.source.remote.response.BusinessSearchResponse
+import abika.sinau.core.domain.model.BusinessSearchDomain
 import abika.sinau.core.domain.usecase.UseCase
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,14 +19,26 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val usecase: UseCase
 ) : ViewModel() {
-    private val _resultBusinessSearch = MutableLiveData<Resource<BusinessSearchResponse>>()
-    val resultBusinessSearch: LiveData<Resource<BusinessSearchResponse>> get() = _resultBusinessSearch
+    private val _resultBusinessSearch = MutableLiveData<Resource<BusinessSearchDomain>>()
+    val resultBusinessSearch: LiveData<Resource<BusinessSearchDomain>> get() = _resultBusinessSearch
 
-    fun searchBusiness(location: String) {
+    var limitFilter: String? = null
+    var location: String? = null
+    var priceFilter: ArrayList<String> = arrayListOf()
+
+    fun searchBusiness(
+        location: String?,
+        price: ArrayList<String>? = null,
+        limit: Int? = null
+    ) {
         viewModelScope.launch {
             _resultBusinessSearch.postValue(Resource.Loading())
             try {
-                val result = usecase.getBusinessSearch(location)
+                val result = usecase.getBusinessSearch(
+                    location,
+                    price,
+                    limit
+                )
                 _resultBusinessSearch.postValue(result)
             } catch (error: Exception) {
                 _resultBusinessSearch.postValue(Resource.Error(error.message.toString()))
