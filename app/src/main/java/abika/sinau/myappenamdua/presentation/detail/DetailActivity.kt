@@ -6,7 +6,6 @@ import abika.sinau.core.domain.model.BusinessReviewDomain
 import abika.sinau.core.utils.base.BaseViewModelActivity
 import abika.sinau.core.utils.gone
 import abika.sinau.core.utils.loadImage
-import abika.sinau.core.utils.toastShort
 import abika.sinau.core.utils.visible
 import abika.sinau.myappenamdua.R
 import abika.sinau.myappenamdua.databinding.ActivityDetailBinding
@@ -32,6 +31,10 @@ class DetailActivity : BaseViewModelActivity<DetailViewModel, ActivityDetailBind
 
     override fun setupViews() {
         businessId = intent?.getStringExtra("BUSINESS_ID")
+        binding.apply {
+            cgDetailBusiness.gone()
+            cgReview.gone()
+        }
     }
 
     override fun setupObservers(lifecycleOwner: LifecycleOwner, viewModel: DetailViewModel) {
@@ -73,7 +76,9 @@ class DetailActivity : BaseViewModelActivity<DetailViewModel, ActivityDetailBind
                         binding.cgReview.gone()
                     }
                     is Resource.Loading -> {
-
+                        binding.apply {
+                            pbLoading.visible()
+                        }
                     }
                 }
             }

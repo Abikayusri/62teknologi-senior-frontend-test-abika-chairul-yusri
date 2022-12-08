@@ -7,5 +7,5 @@
     android:layout_height="wrap_content"
     android:layoutDirection="rtl"
     android:paddingVertical="12dp"
-    app:buttonTint="@color/purple_500"
+    app:buttonTint="@color/jade"
     tools:text="Radiologi" />

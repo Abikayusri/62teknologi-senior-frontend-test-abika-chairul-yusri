@@ -22,13 +22,13 @@ class HomeViewModel @Inject constructor(
     private val _resultBusinessSearch = MutableLiveData<Resource<BusinessSearchDomain>>()
     val resultBusinessSearch: LiveData<Resource<BusinessSearchDomain>> get() = _resultBusinessSearch
 
-    var limitFilter: String? = null
+    var limitFilter: String? = "Semua Data"
     var location: String? = null
     var priceFilter: ArrayList<String> = arrayListOf()
 
     fun searchBusiness(
         location: String?,
-        price: ArrayList<String>? = null,
+        price: String? = null,
         limit: Int? = null
     ) {
         viewModelScope.launch {

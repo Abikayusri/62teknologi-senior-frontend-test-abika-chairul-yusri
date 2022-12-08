@@ -4,4 +4,21 @@
     <string name="label_apply">Terapkan</string>
     <string name="label_open_map">Tap Untuk Membuka Peta</string>
     <string name="label_review">Review</string>
+    <string name="label_all_data">Semua Data</string>
+    <string name="label_total_data">Jumlah Data</string>
+    <string name="label_price">Harga</string>
+    <string name="label_data_not_found">Data Tidak Ditemukan!</string>
+    <string name="label_limit_data">Limit Data</string>
+
+    <!--  filter limit  -->
+    <string name="label_5_data">5 Data</string>
+    <string name="label_10_data">10 Data</string>
+    <string name="label_20_data">20 Data</string>
+    <string name="label_50_data">50 Data</string>
+
+    <!--  filter price  -->
+    <string name="label_price_1">Harga $</string>
+    <string name="label_price_2">Harga $$</string>
+    <string name="label_price_3">Harga $$$</string>
+    <string name="label_price_4">Harga $$$$</string>
 </resources>

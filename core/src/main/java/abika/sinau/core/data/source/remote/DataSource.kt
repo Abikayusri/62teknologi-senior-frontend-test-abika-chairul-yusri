@@ -10,11 +10,9 @@ import retrofit2.Response
  * @author by Abika Chairul Yusri on 12/7/2022
  */
 interface DataSource {
-    //    suspend fun getBusinessSearch(location: String): Response<BusinessSearchResponse>
-//    suspend fun getBusinessSearch(request: BusinessSearchRequest): Response<BusinessSearchResponse>
     suspend fun getBusinessSearch(
         location: String?,
-        price: ArrayList<String>?,
+        price: String?,
         limit: Int?
     ): Response<BusinessSearchResponse>
 

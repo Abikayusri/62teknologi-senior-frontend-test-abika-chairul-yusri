@@ -17,7 +17,7 @@ interface ApiService {
     @GET("businesses/search")
     suspend fun getBusinessSearchPaging(
         @Query("location") location: String?,
-        @Query("price") price: ArrayList<String>?,
+        @Query("price") price: String?,
         @Query("limit") limit: Int?,
     ): Response<BusinessSearchResponse>
 

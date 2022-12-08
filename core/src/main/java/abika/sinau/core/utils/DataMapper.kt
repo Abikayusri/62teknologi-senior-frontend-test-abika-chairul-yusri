@@ -25,7 +25,7 @@ object DataMapper {
                 city = it?.location?.city,
                 price = it?.price,
                 rating = it?.rating,
-                phone = it?.phone,
+                phone = it?.displayPhone,
             )
             business.add(businessess)
         }

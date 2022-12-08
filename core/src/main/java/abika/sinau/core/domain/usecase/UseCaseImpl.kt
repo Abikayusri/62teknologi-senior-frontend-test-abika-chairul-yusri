@@ -15,7 +15,7 @@ class UseCaseImpl(
 ) : UseCase {
     override suspend fun getBusinessSearch(
         location: String?,
-        price: ArrayList<String>?,
+        price: String?,
         limit: Int?
     ): Resource<BusinessSearchDomain> {
         return repository.getBusinessSearch(

@@ -20,7 +20,7 @@ class RepositoryImpl(
 ) : Repository {
     override suspend fun getBusinessSearch(
         location: String?,
-        price: ArrayList<String>?,
+        price: String?,
         limit: Int?
     ): Resource<BusinessSearchDomain> {
         val result = responseToResources(
@@ -33,14 +33,6 @@ class RepositoryImpl(
 
         return mapBusinessSearchResponseToDomain(result)
     }
-
-//    override suspend fun getBusinessSearch(request: BusinessSearchRequest): Resource<BusinessSearchResponse> {
-//        return responseToResources(dataSource.getBusinessSearch(request))
-//    }
-
-//    override suspend fun getBusinessSearch(location: String): Resource<BusinessSearchResponse> {
-//        return responseToResources(dataSource.getBusinessSearch(location))
-//    }
 
     override suspend fun getBusinessDetail(businessId: String): Resource<BusinessDetailDomain> {
         val result = responseToResources(dataSource.getBusinessDetail(businessId))

@@ -1,6 +1,7 @@
 package abika.sinau.myappenamdua.presentation.home.filter
 
 import abika.sinau.core.utils.gone
+import abika.sinau.myappenamdua.R
 import abika.sinau.myappenamdua.databinding.ItemCheckboxBinding
 import abika.sinau.myappenamdua.databinding.ItemRadioButtonBinding
 import abika.sinau.myappenamdua.databinding.LayoutFilterItemBinding
@@ -32,6 +33,7 @@ class FilterResultDialog(
     private val viewmodel: HomeViewModel by activityViewModels()
     private var tempFilter = mutableListOf<String>()
     private val filterSetIds = mutableListOf<Int>()
+    private val filterSelectedTemp = arrayListOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,9 +56,11 @@ class FilterResultDialog(
             }
 
             tvReset.setOnClickListener {
+                filterSelectedTemp.clear()
+
                 when (filterType) {
                     LIMIT_PAGE -> {
-                        viewmodel.limitFilter = null
+                        viewmodel.limitFilter = requireContext().getString(R.string.label_all_data)
                     }
                     PRICE -> {
                         viewmodel.priceFilter.clear()
@@ -66,7 +70,7 @@ class FilterResultDialog(
                 dismiss()
             }
 
-            tvTitle.text = if (filterType == LIMIT_PAGE) "Jumlah Data" else PRICE
+            tvTitle.text = if (filterType == LIMIT_PAGE) requireContext().getString(R.string.label_total_data) else PRICE
 
             btnTerapkan.setOnClickListener {
                 when (filterType) {
@@ -101,6 +105,65 @@ class FilterResultDialog(
             }
         }
     }
+
+    // region radio button
+
+    private fun setupRadioButton() {
+        filterItem.let {
+            val filterSetBinding = createFilterRadioButton()
+            createFilterRadioItem(filterSetBinding, filterItem)
+            binding.llFilterSelection.addView(filterSetBinding.root)
+        }
+    }
+
+    private fun createFilterRadioItem(
+        filterSetBinding: LayoutFilterItemBinding,
+        filterItem: List<String>?
+    ) {
+        filterItem?.forEach {
+            val radioButtonBinding = ItemRadioButtonBinding.inflate(layoutInflater)
+            radioButtonBinding.root.id = View.generateViewId()
+            radioButtonBinding.root.text = it
+
+            val layoutParams = RadioGroup.LayoutParams(
+                RadioGroup.LayoutParams.MATCH_PARENT,
+                RadioGroup.LayoutParams.WRAP_CONTENT
+            )
+
+            radioButtonBinding.root.layoutParams = layoutParams
+
+            if (viewmodel.limitFilter?.isNotEmpty() == true) {
+                radioButtonBinding.root.isChecked = viewmodel.limitFilter == it
+            }
+
+            radioButtonBinding.root.setOnClickListener {
+                tempFilter.clear()
+                tempFilter.add(radioButtonBinding.root.text.toString())
+            }
+
+            filterSetBinding.rgFilter.addView(radioButtonBinding.root)
+        }
+    }
+
+    private fun createFilterRadioButton(): LayoutFilterItemBinding {
+        val filterRadioButtonBinding = LayoutFilterItemBinding.inflate(layoutInflater)
+        View.generateViewId().let { id ->
+            filterSetIds.add(id)
+            filterRadioButtonBinding.root.id = id
+        }
+
+        val layoutParams = LinearLayout.LayoutParams(
+            RadioGroup.LayoutParams.MATCH_PARENT,
+            RadioGroup.LayoutParams.WRAP_CONTENT
+        )
+
+        filterRadioButtonBinding.root.layoutParams = layoutParams
+        return filterRadioButtonBinding
+    }
+
+    // endregion
+
+    // region checkbox
 
     private fun setupCheckBox() {
         if (filterItem?.isNotEmpty() == true) {
@@ -137,63 +200,6 @@ class FilterResultDialog(
         }
         return filterCheckBox
     }
-
-    // region radio button
-
-    private fun setupRadioButton() {
-        filterItem.let {
-            val filterSetBinding = createFilterRadioButton()
-            createFilterRadioItem(filterSetBinding, filterItem)
-            binding.llFilterSelection.addView(filterSetBinding.root)
-        }
-    }
-
-    private fun createFilterRadioItem(
-        filterSetBinding: LayoutFilterItemBinding,
-        filterItem: List<String>?
-    ) {
-        filterItem?.forEach {
-            val radioButtonBinding = ItemRadioButtonBinding.inflate(layoutInflater)
-            radioButtonBinding.root.id = View.generateViewId()
-            radioButtonBinding.root.text = it
-
-            val layoutParams = RadioGroup.LayoutParams(
-                RadioGroup.LayoutParams.MATCH_PARENT,
-                RadioGroup.LayoutParams.WRAP_CONTENT
-            )
-
-            radioButtonBinding.root.layoutParams = layoutParams
-            radioButtonBinding.root.isChecked = true
-
-            radioButtonBinding.root.setOnClickListener {
-                tempFilter.clear()
-                tempFilter.add(radioButtonBinding.root.text.toString())
-            }
-
-            filterSetBinding.rgFilter.addView(radioButtonBinding.root)
-        }
-    }
-
-    private fun createFilterRadioButton(): LayoutFilterItemBinding {
-        val filterRadioButtonBinding = LayoutFilterItemBinding.inflate(layoutInflater)
-        View.generateViewId().let { id ->
-            filterSetIds.add(id)
-            filterRadioButtonBinding.root.id = id
-        }
-
-        val layoutParams = LinearLayout.LayoutParams(
-            RadioGroup.LayoutParams.MATCH_PARENT,
-            RadioGroup.LayoutParams.WRAP_CONTENT
-        )
-
-        filterRadioButtonBinding.root.layoutParams = layoutParams
-        return filterRadioButtonBinding
-    }
-
-    // endregion
-
-    // region checkbox
-
 
     // endregion
 

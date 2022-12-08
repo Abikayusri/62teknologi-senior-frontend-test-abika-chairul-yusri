@@ -15,7 +15,7 @@ class DataSourceImpl(
 ) : DataSource {
     override suspend fun getBusinessSearch(
         location: String?,
-        price: ArrayList<String>?,
+        price: String?,
         limit: Int?
     ): Response<BusinessSearchResponse> {
         return apiService.getBusinessSearchPaging(
@@ -24,14 +24,6 @@ class DataSourceImpl(
             limit
         )
     }
-
-//    override suspend fun getBusinessSearch(location: String): Response<BusinessSearchResponse> {
-//        return apiService.getBusinessSearchPaging(location)
-//    }
-
-//    override suspend fun getBusinessSearch(request: BusinessSearchRequest): Response<BusinessSearchResponse> {
-//        return apiService.getBusinessSearchPaging(request)
-//    }
 
     override suspend fun getBusinessDetail(businessId: String): Response<BusinessDetailResponse> {
         return apiService.getBusinessDetail(businessId)
